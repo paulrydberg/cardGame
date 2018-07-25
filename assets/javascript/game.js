@@ -7,10 +7,25 @@ $(document).ready(function() {
     $(".card-click").attr("data-state", "unselected");
     cardHover();
     selectCard();
-    p1c1(); //for some reason the is the last functions the even runs
+
+    // p1c1(); //for some reason the is the last functions the even runs
     //tried putting the cardHover function below and after click hover doesnt work
     //p1c1 runs once only and i dont know why it wont run on other cards
   });
+});
+
+$(document.body).on("click", ".cards", function() {
+  var attackVal = $(this).attr("data-attack");
+  var defenseVal = $(this).attr("data-defense");
+  console.log("This cards attack value is: " + attackVal);
+  console.log("This cards defense value is: " + defenseVal);
+
+  database.ref("/" + "p1Scores").set({
+    attackVal,
+    defenseVal
+  });
+
+  //console.log("test");
 });
 
 function selectCard() {
@@ -37,19 +52,19 @@ function selectCard() {
   });
 }
 
-function p1c1() {
-  $(".cards").on("click", function() {
-    var attackVal = $(this).attr("data-attack");
-    var defenseVal = $(this).attr("data-defense");
-    //console.log("This cards attack value is: " + attackVal);
-    //console.log("This cards defense value is: " + defenseVal);
+// function p1c1() {
+//   $(".cards").on("click", function() {
+//     var attackVal = $(this).attr("data-attack");
+//     var defenseVal = $(this).attr("data-defense");
+//     //console.log("This cards attack value is: " + attackVal);
+//     //console.log("This cards defense value is: " + defenseVal);
 
-    database.ref("/" + "p1Scores").set({
-      attackVal,
-      defenseVal
-    });
-  });
-}
+//     database.ref("/" + "p1Scores").set({
+//       attackVal,
+//       defenseVal
+//     });
+//   });
+// }
 
 // GLOBAL VARIABLES
 

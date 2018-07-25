@@ -5,6 +5,7 @@ $(document).ready(function() {
     $("#actualGame").show();
   });
 });
+
 //   $("#otherButtons").on("click", function() {
 //     setTimeout(function(argument));
 //   });
@@ -116,6 +117,7 @@ function startGame(playerIdDeck) {
         addAttackValues(p1Hand);
         addDefenseValues(p1Hand);
         addImageToCards(p1Hand);
+        console.log(p1Hand);
       }
     } else if (playerIdDeck === p2deckId) {
       for (var i = 0; i < response.cards.length; i++) {

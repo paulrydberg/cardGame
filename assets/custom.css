@@ -1,11 +1,11 @@
 body {
   background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485bb),
-  url(/Users/steviesovak/Desktop/code/group3repo/assets/images/BACKGROUNDS/blood-splatter-15.jpg);
+    url(./images/BACKGROUNDS/blood-splatter-15.jpg);
   background-size: cover;
   background-position: top;
 }
 #beginbox {
-  background-color:rgba(194, 76, 55, 0.89);
+  background-color: rgba(194, 76, 55, 0.89);
   height: 500px;
   position: absolute;
   top: 50%;
@@ -79,10 +79,8 @@ body {
   display: inline-block;
 }
 .justinline {
-  display: inline-block
+  display: inline-block;
 }
-
-
 
 .bttn:hover {
   transform: translateY(-3px);
@@ -121,62 +119,60 @@ body {
   padding-top: 25px;
 }
 
-  /* Ursus' Battlefield CSS */
+/* Ursus' Battlefield CSS */
 
-  #p1name {
-    width: 25%;
-    margin-left: 37%;
-    padding-top: 25px;
-  }
-  
-  #p2name {
-    width: 25%;
-    margin-top: 75px;
-    margin-left: 37%;
-  }
+#p1name {
+  width: 25%;
+  margin-left: 37%;
+  padding-top: 25px;
+}
 
-  .player1cards {
-    
-  }
-  .player2cards {
-    
-  }
+#p2name {
+  width: 25%;
+  margin-top: 75px;
+  margin-left: 37%;
+}
 
-  .cards {
-    width: 200px;
-    /* position: relative; */
-    /* padding: 5px; */
-  }
+.player1cards {
+}
+.player2cards {
+}
 
-  .drawpile {
-    width: 140px;
-    float: right;
-    margin-top: 50px;
-  }
+.cards {
+  width: 200px;
+  /* position: relative; */
+  /* padding: 5px; */
+}
 
-  #p1draw {
-    margin-top: 100px;
-  }
+.drawpile {
+  width: 140px;
+  float: right;
+  margin-top: 50px;
+}
 
-  #p2draw {
-    margin-top: 150px;
-  }
+#p1draw {
+  margin-top: 100px;
+}
 
-  .discardpile {
-    width: 140px;
-    float: left;
-    margin-top: 50px;
-  }
+#p2draw {
+  margin-top: 150px;
+}
 
-  #p2discard {
-    margin-top: 200px;
-  }
+.discardpile {
+  width: 140px;
+  float: left;
+  margin-top: 50px;
+}
 
-  .battlefield {
-    margin-top: 100px;
-  }
+#p2discard {
+  margin-top: 200px;
+}
 
-  /* ENDS URSUS' CSS FOR BATTLEFIELD */
+.battlefield {
+  margin-top: 100px;
+}
+
+/* ENDS URSUS' CSS FOR BATTLEFIELD */
 
 /* 
 font-family: 'Shrikhand', cursive;

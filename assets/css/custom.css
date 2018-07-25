@@ -1,17 +1,43 @@
-body {
+gamebody {
   background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485bb),
-    /* url(../images/bg.jpg); */
+  url(http://www.onlygfx.com/wp-content/uploads/2015/11/blood-splatter-9.jpg);
   background-size: cover;
   background-position: top;
 }
-#beginbox {
-  background-color: rgba(0, 0, 255, 0.308);
-  height: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+img {
+  width: 175px;
+  height: 175px;
+  float: left;
+  shape-outside: circle(50%);
+  margin-right: 10px;
+}
+body{
+  font-family: eczar;
   width: 70%;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px 40px;
+  box-shadow: 0 0 20px #999;
+}
+h1{
+  text-align: center;
+  margin-top: 0;
+}
+h2{
+  text-align: center;
+  margin-top: 0;
+}
+
+
+html{
+  background: url(http://caskia.me/wp-content/uploads/2018/03/hd-fire-backgrounds-group-76-throughout-wallpaper.jpg);
+}
+#questions {
+  background-color:rgba(194, 76, 55, 0.89);
+  overflow:hidden;
+  margin: 10px;
+  min-height:170px;
+  width:45%;
   font-family: "Permanent Marker", cursive;
   text-align: center;
 }
@@ -27,7 +53,7 @@ body {
   font-family: "Permanent Marker", cursive;
   text-align: center;
 }
-#results {
+ #results {
   display: none;
   background-color: rgba(21, 255, 0, 0.308);
   height: 200px;
@@ -38,7 +64,7 @@ body {
   width: 70%;
   font-family: "Permanent Marker", cursive;
   text-align: center;
-}
+} 
 #title {
   padding: 17% 0;
   animation: moveInRight 1s ease-out;

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,39 +20,73 @@
 <body>
 
     <div class="container" id="beginbox">
-
-        <div>
-            <div id="title">
-                <div id="letsStart">
-                    <h1>Dystopia Game</h1>
-                    <p>...for too long I've seen my friends become captured by humans and stuffed into pokeballs...only to have
-                        us fight each-other. I've witnessed this problem from the inside since day 1. Now we are the ones
-                        who will do the capturing, we will command an army of villains to do our bidding. Who am I?...My
-                        name is Pikachu. I know what you're thinking...Pikachu why are you using villains to fight with?
-                        I'll tell you why!!!! I'm sick and tired of being the good guy. Now it's my turn to tell the humans
-                        what to do. I am Pikachu!!!!!! Join me as a villain or be slain along with the other petty human
-                        pawns. Mwhahahaha some of the humans that pikachu captured will escape and join the 'human' player
-                        thats why they are on the good guys team</p>
-                    <a href="#" id="gamestart" class="bttn bttn-white">Start The Game</a>
-                </div>
+        <h1>Pikachu's Revenge</h1>
+        <img  src="https://img.clipartxtras.com/d2598a19a888e5b08680dadb271b7af4_angry-pikachu-drawing-clipartxtras-angry-pikachu-drawing_600-623.jpeg" alt="Pikachu" />
+        <p>...for too long I've seen my friends become captured by humans and stuffed into pokeballs...only to have
+        us fight each-other. I've witnessed this problem from the inside since day 1. Now we are the ones
+        who will do the capturing, we will command an army of villains to do our bidding. </p>
+        <p>Who am I?...My
+        name is Pikachu. I know what you're thinking...Pikachu why are you using villains to fight with?
+        I'll tell you why!!!! I'm sick and tired of being the good guy. Now it's my turn to tell the humans
+        what to do. </p>
+        <p>I am Pikachu!!!!!! Join me as a villain or be slain along with the other petty human
+        pawns. Mwhahahaha some of the humans that pikachu captured will escape and join the 'human' player
+        thats why they are on the good guys team!</p>
+        
+        <h2>ARE YOU GOOD OR EVIL BRUHHHH??!?</h2>
+        <br>
+            <div class="form-group text-center">
+                <p>1. DO YOU WANT TO SEE THE WORLD BURN? ?</p>
+                <form class="question">
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
+                    </label>
+                </form>
+                <br>
+                
+                <p>2. DO YOU WANT TO SEE PIKACHU DESTROY ALL HUMANS?</p>
+                <form class="question">
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
+                    </label>
+                </form>
+                <br>
+    
+                <p>3. DO YOU LIKE THE COLOR YELLOW?</p>
+                <form class="question">
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="wrong">NAH I'M GOOD!
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio" class="optradio" value="goodanswer">HMMM... MAYBE!
+                    </label>
+                </form>
+                <br>
+                <a href="#" id="gamestart" class="bttn bttn-white">Start The Game</a>
+              
+                <br>
             </div>
-        </div>
 
     </div>
 
     <div class="container" id="actualGame">
 
         <!-- Player 1's side -->
-
-        <div class="hand" id ="p1hand">
-
-            <span id="handp1card1"></span>
-            <span id="handp1card2"></span>
-            <span id="handp1card3"></span>
-            <span id="handp1card4"></span>
-            <span id="handp1card5"></span>
-        </div>
-
         <div class="battlefield" id="p1battlefield">
 
             <div class="row">
@@ -75,20 +109,12 @@
 
         </div>
 
-        <!-- Player 2's Side -->
-
-        <div class="hand" id ="p2hand">
-
-            <span id="handp2card1"></span>
-            <span id="handp2card2"></span>
-            <span id="handp2card3"></span>
-            <span id="handp2card4"></span>
-            <span id="handp2card5"></span>
-        </div>
-
 
         <div class="battlefield" id="p2battlefield">
             <div class="row">
+                <div class="col" id="p2card0">
+
+                </div>
                 <div class="col" id="p2card1">
 
                 </div>
@@ -101,12 +127,11 @@
                 <div class="col" id="p2card4">
 
                 </div>
-                <div class="col" id="p2card5">
-
-                </div>
             </div>
 
         </div>
+
+        <a href="#" id="endturn" class="bttn bttn-white">End Turn</a>
 
         <!-- <a href="#" id="triggerDefense" class="bttn bttn-white">Trigger Defense</a> -->
     </div>

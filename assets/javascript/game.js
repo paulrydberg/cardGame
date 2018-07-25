@@ -154,10 +154,11 @@ $(document).ready(function() {
       })
       .then(response => {
         p1AttackScores(p1Hand);
-      }).then(response => {
+      })
+      .then(response => {
         p1DefenseScores(p1Hand);
-        
-      }).then(response => {
+      })
+      .then(response => {
         storeCardsFirebase();
       });
   }
@@ -322,7 +323,11 @@ $(document).ready(function() {
       var defenseCard5 = parseInt(handArray[4].defense);
 
       var TotalDefense =
-        defenseCard1 + defenseCard2 + defenseCard3 + defenseCard4 + defenseCard5;
+        defenseCard1 +
+        defenseCard2 +
+        defenseCard3 +
+        defenseCard4 +
+        defenseCard5;
       console.log(TotalDefense);
 
       handArray.totalDefense = TotalDefense;
@@ -348,7 +353,7 @@ $(document).ready(function() {
       console.log(player1Firebase);
       console.log("^^^ Firebase Player 1 Object");
 
-      var player2Firebase = snapshot.val()[player2Key].player2;
+      var player2Firebase = snapshot.val()[player2Key].player1;
       console.log(player2Firebase);
       console.log("^^^ Firebase Player 2 Object");
     },

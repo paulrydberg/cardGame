@@ -1,9 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
   $("#actualGame").hide();
-  $("#gamestart").on("click", function () {
+  $("#gamestart").on("click", function() {
     $("#beginbox").hide();
     $("#actualGame").show();
   });
+
 });
 //   $("#otherButtons").on("click", function() {
 //     setTimeout(function(argument));

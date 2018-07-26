@@ -20,13 +20,41 @@ $(document.body).on("click", ".cards", function() {
   console.log("This cards attack value is: " + attackVal);
   console.log("This cards defense value is: " + defenseVal);
 
-  database.ref("/" + "p1Scores").set({
+  database.ref.on("/" + "p1Scores").set({
     attackVal,
     defenseVal
   });
 
   //console.log("test");
 });
+
+// database.ref().on(
+//   "value",
+//   function(snapshot) {
+//     // console.log(snapshot.val();   // Shows data from entire firebase object
+//     var player1Key = Object.keys(snapshot.val())[0];
+//     //console.log(player1Key);
+
+//     var player2Key = Object.keys(snapshot.val())[1];
+//     //console.log(player1Key);
+//     // console.log(
+//     //   "-----------------------------------------------------------------------------------------------"
+//     // );
+//     // ^^^Helps seperate whats seen in devtools console
+//     var player1Firebase = snapshot.val()[player1Key];
+//     console.log(player1Firebase);
+
+//     // console.log("^^^ Firebase Player 1 Object");
+
+//     var player2Firebase = snapshot.val()[player2Key];
+//     console.log(player2Firebase);
+//     // console.log("^^^ Firebase Player 2 Object");
+//   },
+//   function(errorObject) {
+//     // In case of error this will print the error
+//     console.log("The read failed: " + errorObject.code);
+//   }
+// );
 
 function selectCard() {
   $(".card-click").on("click", function() {
@@ -131,6 +159,7 @@ setTimeout(masterStartFunction);
 function masterStartFunction() {
   runStartPlayer1();
   runStartPlayer2();
+
   setTimeout(callFirebaseData, 1000);
 }
 

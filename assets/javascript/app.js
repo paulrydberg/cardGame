@@ -2,13 +2,216 @@ $(document).ready(function() {
   $("#actualGame").hide();
   $("#gamestart").on("click", function() {
     $("#beginbox").hide();
+    appendPlayer1();
     $("#actualGame").show();
+    $(".card-click").attr("data-state", "unselected");
+    cardHover();
+    selectCard();
+    getAttributeVals();
+    pushCardVals();
+
+    // p1c1(); //for some reason the is the last functions the even runs
+    //tried putting the cardHover function below and after click hover doesnt work
+    //p1c1 runs once only and i dont know why it wont run on other cards
   });
 });
 
-//   $("#otherButtons").on("click", function() {
-//     setTimeout(function(argument));
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+//https://api.jquery.com/clone/
+
+var p1battledAttack = [1, 2, 3, 4, 5];
+
+var x = "";
+
+var p1battledCard1 = parseInt(x);
+var p1battledCard2 = parseInt(x);
+var p1battledCard3 = parseInt(x);
+var p1battledCard4 = parseInt(x);
+var p1battledCard5 = parseInt(x);
+
+function calcTheScore(battlefieldCards) {
+  for (let i = 0; i < battlefieldCards.length; i++) {
+    var totalAttack = battlefieldCards[i] + battlefieldCards[i];
+    console.log(totalAttack);
+  }
+}
+
+//calcTheScore(p1battledAttack);
+
+function p1score() {
+  var totalScore =
+    p1battledCard1 +
+    p1battledCard2 +
+    p1battledCard3 +
+    p1battledCard4 +
+    p1battledCard5;
+  return totalScore;
+}
+
+function calcWinner(p1, p2) {
+  if (p1 > p2) {
+    console.log("Player 1 Wins");
+  } else {
+    console.log("Player 2 Wins");
+  }
+}
+
+function getAttributeVals() {
+  $(document.body).on("click", ".cards", function() {
+    attackVal = $(this).attr("data-attack");
+    defenseVal = $(this).attr("data-defense");
+
+    console.log("This cards attack value is: " + attackVal);
+    console.log("This cards defense value is: " + defenseVal);
+  });
+}
+
+function pushCardVals() {
+  $(document.body).on("click", ".cards", function() {
+    database.ref("/" + "p1Scores").set({
+      attackVal: attackVal,
+      defenseVal: defenseVal
+    });
+  });
+}
+
+function func2() {
+  database.ref("/" + "p1Scores").on(
+    "value",
+    function(snapshot) {
+      // console.log(snapshot.val();   // Shows data from entire firebase object
+      var firebaseAttackVal = Object.keys(snapshot.val().attackVal);
+      var firebasedefenseVal = Object.keys(snapshot.val().defenseVal);
+      //console.log(player1Key);
+      console.log(
+        "Firebase total attack is: " + Object.keys(snapshot.val().attackVal)
+      );
+      console.log("Firebase total defense is: " + firebasedefenseVal);
+
+      //console.log(player1Key);
+      // console.log(
+      //   "-----------------------------------------------------------------------------------------------"
+      // );
+      // ^^^Helps seperate whats seen in devtools console
+      //var player1Firebase = snapshot.val()[player1Key];
+      //console.log(player1Firebase);
+
+      //console.log(player1Firebase);
+
+      // console.log("^^^ Firebase Player 1 Object");
+
+      //console.log(player2Firebase);
+      // console.log("^^^ Firebase Player 2 Object");
+    },
+    function(errorObject) {
+      // In case of error this will print the error
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
+}
+
+$(document).on("click", ".cards", function() {
+  // database.ref("/" + "p1Scores").on(
+  //   "value",
+  //   function(snapshot) {
+  //     // console.log(snapshot.val();   // Shows data from entire firebase object
+  //     var firebaseAttackVal = Object.keys(snapshot.val().attackVal);
+  //     var firebasedefenseVal = Object.keys(snapshot.val().defenseVal);
+  //     //console.log(player1Key);
+  //     console.log("Firebase total attack is: " + firebaseAttackVal);
+  //     console.log("Firebase total defense is: " + firebasedefenseVal);
+  //     //console.log(player1Key);
+  //     // console.log(
+  //     //   "-----------------------------------------------------------------------------------------------"
+  //     // );
+  //     // ^^^Helps seperate whats seen in devtools console
+  //     //var player1Firebase = snapshot.val()[player1Key];
+  //     //console.log(player1Firebase);
+  //     //console.log(player1Firebase);
+  //     // console.log("^^^ Firebase Player 1 Object");
+  //     //console.log(player2Firebase);
+  //     // console.log("^^^ Firebase Player 2 Object");
+  //   },
+  //   function(errorObject) {
+  //     // In case of error this will print the error
+  //     console.log("The read failed: " + errorObject.code);
+  //   }
+  // );
+  //console.log("test");
+});
+
+function cardHover() {
+  $(".cards").hover(function() {
+    var state = $(this).attr("data-state");
+
+    if (state === "face") {
+      $(this).attr("src", $(this).attr("data-description"));
+      $(this).attr("data-state", "description");
+      $(this)
+        .parent()
+        .css("z-index", "-2");
+    } else {
+      $(this).attr("src", $(this).attr("data-face"));
+      $(this).attr("data-state", "face");
+      $(this)
+        .parent()
+        .css("z-index", "2");
+    }
+  });
+}
+
+// $(document.body).on("click", ".cards", function() {
+//   var attackVal = $(this).attr("data-attack");
+//   var defenseVal = $(this).attr("data-defense");
+//   console.log("This cards attack value is: " + attackVal);
+//   console.log("This cards defense value is: " + defenseVal);
+
+//   database.ref("/" + "p1Scores").set({
+//     attackVal,
+//     defenseVal
 //   });
+
+//   //console.log("test");
+// });
+
+function selectCard() {
+  $(".card-click").on("click", function() {
+    var state = $(this).attr("data-state");
+
+    if (state === "selected") {
+      $(this)
+        .css("width", "100%")
+        .css("height", "100%")
+        .css("opacity", "0.70")
+        .css("-moz-opacity", "70%")
+        .css("-webkit-opacity", "70%");
+      $(this).attr("data-state", "unselected");
+    } else {
+      $(this).attr("data-state", "selected");
+      $(this)
+        .css("width", "100%")
+        .css("height", "100%")
+        .css("opacity", "1.00")
+        .css("-moz-opacity", "100%")
+        .css("-webkit-opacity", "100%");
+    }
+  });
+}
+
+function p1c1() {
+  $(".cards").on("click", function() {
+    var attackVal = $(this).attr("data-attack");
+    var defenseVal = $(this).attr("data-defense");
+    //console.log("This cards attack value is: " + attackVal);
+    //console.log("This cards defense value is: " + defenseVal);
+
+    database.ref("/" + "p1Scores").set({
+      attackVal,
+      defenseVal
+    });
+  });
+}
 
 // GLOBAL VARIABLES
 
@@ -18,7 +221,7 @@ var config = {
   authDomain: "group3game.firebaseapp.com",
   databaseURL: "https://group3game.firebaseio.com",
   projectId: "group3game",
-  storageBucket: "",
+  storageBucket: "group3game.appspot.com",
   messagingSenderId: "751394697789"
 };
 firebase.initializeApp(config);
@@ -43,17 +246,17 @@ var p1card1SRC,
   //   Desc,
   description;
 
-p1card1SRC = "./assets/images/cards/drEvil.png";
-p1card2SRC = "./assets/images/cards/descriptor.png";
-p1card3SRC = "./assets/images/cards/crocDundee.png";
-p1card4SRC = "./assets/images/cards/capHook.png";
-p1card5SRC = "./assets/images/cards/bruceWayne.png";
+p1card1SRC = "./assets/images/cards/evil/agentSmith.png";
+p1card2SRC = "./assets/images/cards/evil/ajitPai.png";
+p1card3SRC = "./assets/images/cards/evil/annoyingFacebookGirl.png";
+p1card4SRC = "./assets/images/cards/evil/antonChigurh.png";
+p1card5SRC = "./assets/images/cards/evil/badAdviceMallard.png";
 
-p2card1SRC = "./assets/images/cards/descriptor.png";
-p2card2SRC = "./assets/images/cards/face.png";
-p2card3SRC = "./assets/images/cards/heisenberg.png";
-p2card4SRC = "./assets/images/cards/jessePinkman.png";
-p2card5SRC = "./assets/images/cards/joker.png";
+p2card1SRC = "./assets/images/cards/evil/agentSmith.png";
+p2card2SRC = "./assets/images/cards/evil/ajitPai.png";
+p2card3SRC = "./assets/images/cards/evil/annoyingFacebookGirl.png";
+p2card4SRC = "./assets/images/cards/evil/antonChigurh.png";
+p2card5SRC = "./assets/images/cards/evil/badAdviceMallard.png";
 
 description = "./assets/images/cards/descriptor.png";
 
@@ -70,32 +273,40 @@ var p2Hand = [];
 var p1Battlefield = [];
 var p2Battlefield = [];
 
+setTimeout(masterStartFunction);
+
+function masterStartFunction() {
+  runStartPlayer1();
+  runStartPlayer2();
+  setTimeout(callFirebaseData, 1000);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // START GAME STUFF
 
 //   Grabs a deck of cards for Player 1 - More specifically this grabs an ID for the players deck to pull from API
-//function runStartPlayer1() {
-$.ajax({
-  url: url + cards,
-  method: "GET"
-}).then(response => {
-  //console.log("Player 1 Deck");
-  p1deckId = response.deck_id;
-  startGame(p1deckId);
-});
-//}
+function runStartPlayer1() {
+  $.ajax({
+    url: url + cards,
+    method: "GET"
+  }).then(response => {
+    //console.log("Player 1 Deck");
+    p1deckId = response.deck_id;
+    startGame(p1deckId);
+  });
+}
 
 //   Grabs a deck of cards for Player 2 - More specifically this grabs an ID for the players deck to pull from API
-//function runStartPlayer2() {
-$.ajax({
-  url: url + cards,
-  method: "GET"
-}).then(response => {
-  //console.log("Player 2 Deck");
-  p2deckId = response.deck_id;
-  startGame(p2deckId);
-});
-//}
+function runStartPlayer2() {
+  $.ajax({
+    url: url + cards,
+    method: "GET"
+  }).then(response => {
+    //console.log("Player 2 Deck");
+    p2deckId = response.deck_id;
+    startGame(p2deckId);
+  });
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // FUNCTION DEFINITIONS
@@ -117,8 +328,8 @@ function startGame(playerIdDeck) {
         addAttackValues(p1Hand);
         addDefenseValues(p1Hand);
         addImageToCards(p1Hand);
-        console.log(p1Hand);
       }
+      storeP1Hand();
     } else if (playerIdDeck === p2deckId) {
       for (var i = 0; i < response.cards.length; i++) {
         p2Hand.push(response.cards[i]);
@@ -126,25 +337,77 @@ function startGame(playerIdDeck) {
         addDefenseValues(p2Hand);
         addImageToCards(p2Hand);
       }
+      storeP2Hand();
     }
   });
 }
 
+function removeEverythingFromFirebase() {
+  database.ref().remove();
+}
+
 function storeP1Hand() {
-  database.ref("player1hand/").push({
+  database.ref().push({
     p1Hand
+    //playedAttack: "0",
+    //playedDefense: "0"
   });
-  console.log("Player 1's hand has been pushed to firebase");
+
+  firebase
+    .database()
+    .ref("/" + "p1Scores")
+    .set({
+      attackVal: "0",
+      defenseVal: "0"
+    });
+
+  //console.log("Player 1's hand has been pushed to firebase");
 }
 
 function storeP2Hand() {
-  database.ref("player2hand/").push({
+  database.ref().push({
     p2Hand
   });
-  console.log("Player 2's hand has been pushed to firebase");
+
+  firebase
+    .database()
+    .ref("/" + "p2Scores")
+    .set({
+      attackVal: "0",
+      defenseVal: "0"
+    });
+  //console.log("Player 2's hand has been pushed to firebase");
 }
 
-$("#card0").on("click", function() {});
+function callFirebaseData() {
+  database.ref().on(
+    "value",
+    function(snapshot) {
+      // console.log(snapshot.val();   // Shows data from entire firebase object
+      var player1Key = Object.keys(snapshot.val())[0];
+      //console.log(player1Key);
+
+      var player2Key = Object.keys(snapshot.val())[1];
+      //console.log(player1Key);
+      // console.log(
+      //   "-----------------------------------------------------------------------------------------------"
+      // );
+      // ^^^Helps seperate whats seen in devtools console
+      var player1Firebase = snapshot.val()[player1Key];
+      console.log(player1Firebase);
+
+      // console.log("^^^ Firebase Player 1 Object");
+
+      var player2Firebase = snapshot.val()[player2Key];
+      console.log(player2Firebase);
+      // console.log("^^^ Firebase Player 2 Object");
+    },
+    function(errorObject) {
+      // In case of error this will print the error
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
+}
 
 // function storeCards1(handArray) {
 //   for (var i = 0; i <= handArray.length; i++) {
@@ -156,32 +419,6 @@ $("#card0").on("click", function() {});
 //       p1c5defense: handArray[i].defense
 //     });
 //   }
-// }
-
-// function storeCards2(handArray) {
-//   for (var i = 0; i <= handArray.length; i++) {
-//     database.ref().push({
-//       p2c1character: handArray[i].character,
-//       p2c2cardDescription: handArray[i].cardDescription,
-//       p2c3imagePath: handArray[i].customIMG,
-//       p2c4attack: handArray[i].attack,
-//       p2c5defense: handArray[i].defense
-//     });
-//   }
-// }
-
-// function storePlayer1Cards() {
-//   database.ref().push({
-//     player1: p1Hand //add comma after this if you are pushing more than one key/value pair
-//     //player2: p2Hand
-//   });
-// }
-
-// function storePlayer2Cards() {
-//   database.ref().push({
-//     player2: p2Hand //add comma after this if you are pushing more than one key/value pair
-//     //player2: p2Hand
-//   });
 // }
 
 // function calcScores() {
@@ -269,7 +506,7 @@ $("#card0").on("click", function() {});
 //   //console.log(p1TotalAttack);
 // }
 
-function p1AttackScores(handArray) {
+function AttackScores(handArray) {
   for (var i = 0; i < handArray.length; i++) {
     //console.log(handArray[i].code);
 
@@ -288,7 +525,7 @@ function p1AttackScores(handArray) {
   }
 }
 
-function p1DefenseScores(handArray) {
+function DefenseScores(handArray) {
   for (var i = 0; i < handArray.length; i++) {
     //console.log(handArray[i].code);
 
@@ -306,34 +543,6 @@ function p1DefenseScores(handArray) {
     //console.log(p1Hand);
   }
 }
-
-// database.ref().on(
-//   "value",
-//   function (snapshot) {
-//     // console.log(snapshot.val();   // Shows data from entire firebase object
-//     var player1Key = Object.keys(snapshot.val())[0];
-//     var player2Key = Object.keys(snapshot.val())[1];
-//     //console.log(masterKey);
-//     console.log(
-//       "-----------------------------------------------------------------------------------------------"
-//     );
-//     // ^^^Helps seperate whats seen in devtools console
-//     var player1Firebase = snapshot.val()[player1Key].player1;
-//     console.log(player1Firebase);
-//     console.log("^^^ Firebase Player 1 Object");
-
-//     var player2Firebase = snapshot.val()[player2Key].player2;
-//     console.log(player2Firebase);
-//     console.log("^^^ Firebase Player 2 Object");
-//   },
-//   function (errorObject) {
-//     // In case of error this will print the error
-//     console.log("The read failed: " + errorObject.code);
-//   }
-// );
-
-//Play with this find out how to remove objects this way in firebase
-//player2Firebase = snapshot.val()[masterKey].player2.remove();
 
 // Nests an AJAX call within a function to allow for a Player to draw a card from the DeckOfCards API
 function drawACard(playerIdDeck) {
@@ -472,167 +681,87 @@ function addImageToCards(handArray) {
   }
 }
 
-function displayHand(handArray) {
-  for (var i = 0; i < handArray.length; i++) {
-    var IMGdiv = $("<div>");
-    IMGdiv.addClass("absolute");
-    IMGdiv.addClass("higherZ");
-    var cardIMG = $("<img class='handcard'>");
-    cardIMG.addClass("cards");
-    cardIMG.addClass("pointerHover");
-    cardIMG.addClass("player1cards");
-    cardIMG.attr("src", handArray[i].customIMG);
-    cardIMG.attr("data-description", description);
-    cardIMG.attr("data-face", handArray[i].customIMG);
-    cardIMG.attr("data-state", "face");
-    cardIMG.attr("alt", "Player X | Card X");
+function appendPlayer1() {
+  database.ref().on(
+    "value",
+    function(snapshot) {
+      var player1Key = Object.keys(snapshot.val())[0];
+      //var player2Key = Object.keys(snapshot.val())[1];
+      var player1Firebase = snapshot.val()[player1Key].p1Hand;
+      //var player2Firebase = snapshot.val()[player2Key].p2Hand;
+      //console.log(player1Firebase.length);
 
-    var Container = $("<div>");
-    Container.addClass("justinline");
-    Container.addClass("relative");
-    var Description = $("<div>");
-    Description.addClass("absolute");
-    $(Description).css("z-index", "0");
-    var cardTitle = $("<h6>");
-    cardTitle.addClass("h6");
-    var Ptag = $("<p>");
-    Ptag.addClass("p");
-    $(cardTitle).text(handArray[i].character);
-    $(Ptag).text(handArray[i].cardDescription);
-    var Title = $(Description).html(cardTitle);
-    var Desc = $(Description).html(Ptag);
-    Description.addClass("text-block");
+      for (var i = 0; i < player1Firebase.length; i++) {
+        var IMGdiv = $("<div>"); //div that holds the image
+        IMGdiv.addClass("absolute");
+        IMGdiv.addClass("higherZ");
 
-    Container.append(Description);
-    Container.append(IMGdiv);
-    IMGdiv.append(cardIMG);
-    Container.append(Title);
-    Container.append(Desc);
+        var cardIMG = $("<img>");
+        //cardIMG.addClass("handcard");
+        cardIMG.addClass("cards");
+        //cardIMG.addClass("pointerHover");
+        //cardIMG.addClass("player1cards");
+        cardIMG.attr("src", player1Firebase[i].customIMG);
+        cardIMG.attr("data-description", description);
+        cardIMG.attr("data-face", player1Firebase[i].customIMG);
+        cardIMG.attr("data-state", "face");
 
-    $("#p1card" + [i]).append(Container);
-  }
-}
+        cardIMG.attr("data-attack", player1Firebase[i].attack);
+        cardIMG.attr("data-defense", player1Firebase[i].defense);
 
-function displayPlayer1Hand(handArray) {
-  for (var i = 0; i < handArray.length; i++) {
-    var IMGdiv = $("<div>");
-    IMGdiv.addClass("absolute");
-    IMGdiv.addClass("higherZ");
-    var cardIMG = $("<img>");
-    cardIMG.addClass("cards");
-    cardIMG.addClass("pointerHover");
-    cardIMG.addClass("player1cards");
-    cardIMG.attr("src", handArray[i].customIMG);
-    cardIMG.attr("data-description", description);
-    cardIMG.attr("data-face", handArray[i].customIMG);
-    cardIMG.attr("data-state", "face");
-    cardIMG.attr("alt", "Player X | Card X");
+        cardIMG.attr("alt", "Player X | Card X");
 
-    var Container = $("<div>");
-    Container.addClass("justinline");
-    Container.addClass("relative");
-    var Description = $("<div>");
-    Description.addClass("absolute");
-    $(Description).css("z-index", "0");
-    var cardTitle = $("<h6>");
-    cardTitle.addClass("h6");
-    var Ptag = $("<p>");
-    Ptag.addClass("p");
-    $(cardTitle).text(handArray[i].character);
-    $(Ptag).text(handArray[i].cardDescription);
-    var Title = $(Description).html(cardTitle);
-    var Desc = $(Description).html(Ptag);
-    Description.addClass("text-block");
+        var Container = $("<div>");
 
-    Container.append(Description);
-    Container.append(IMGdiv);
-    IMGdiv.append(cardIMG);
-    Container.append(Title);
-    Container.append(Desc);
+        Container.addClass("nudge-left");
+        Container.addClass("relative");
+        var Description = $("<div>");
+        Description.addClass("absolute");
+        $(Description).css("z-index", "0");
+        var cardTitle = $("<h6>");
+        cardTitle.addClass("h6");
+        var Ptag = $("<p>");
+        Ptag.addClass("p");
+        $(cardTitle).text(player1Firebase[i].character);
+        $(Ptag).text(player1Firebase[i].cardDescription);
+        var Title = $(Description).html(cardTitle);
+        var Desc = $(Description).html(Ptag);
+        Description.addClass("text-block");
 
-    $("#p1card" + [i]).append(Container);
-  }
-}
+        IMGdiv.append(cardIMG);
+        Container.append(Description);
+        Container.append(IMGdiv);
+        IMGdiv.append(cardIMG);
+        Container.append(Title);
+        Container.append(Desc);
 
-function displayPlayer2Hand(handArray) {
-  for (var i = 0; i < handArray.length; i++) {
-    var IMGdiv = $("<div>");
-    IMGdiv.addClass("absolute");
-    IMGdiv.addClass("higherZ");
-    var cardIMG = $("<img>");
-    cardIMG.addClass("cards");
-    cardIMG.addClass("pointerHover");
-    cardIMG.addClass("player2cards");
-    cardIMG.attr("src", handArray[i].customIMG);
-    cardIMG.attr("data-description", description);
-    cardIMG.attr("data-face", handArray[i].customIMG);
-    cardIMG.attr("data-state", "face");
-    cardIMG.attr("alt", "Player X | Card X");
-
-    var Container = $("<div>");
-    Container.addClass("justinline");
-    Container.addClass("relative");
-    var Description = $("<div>");
-    Description.addClass("absolute");
-    $(Description).css("z-index", "0");
-    var cardTitle = $("<h6>");
-    cardTitle.addClass("h6");
-    var Ptag = $("<p>");
-    Ptag.addClass("p");
-    $(cardTitle).text(handArray[i].character);
-    $(Ptag).text(handArray[i].cardDescription);
-    var Title = $(Description).html(cardTitle);
-    var Desc = $(Description).html(Ptag);
-    Description.addClass("text-block");
-
-    Container.append(Description);
-    Container.append(IMGdiv);
-    IMGdiv.append(cardIMG);
-    Container.append(Title);
-    Container.append(Desc);
-
-    $("#p2card" + [i]).append(Container);
-  }
-}
-
-$(".cards").hover(
-  function() {
-    var state = $(this).attr("data-state");
-
-    if (state === "face") {
-      $(this).attr("src", $(this).attr("data-description"));
-      $(this).attr("data-state", "description");
-      $(this)
-        .parent()
-        .css("z-index", "-2");
-    } else {
-      $(this).attr("src", $(this).attr("data-face"));
-      $(this).attr("data-state", "face");
-      $(this)
-        .parent()
-        .css("z-index", "2");
+        $("#p1card" + [i]).append(Container);
+        $(cardIMG).css("border", "5px solid red");
+      }
+    },
+    function(errorObject) {
+      // In case of error this will print the error
+      console.log("The read failed: " + errorObject.code);
     }
-  }
-
-  // function() {
-  //   var state = $(this).attr("data-state");
-
-  //   if (state === "face") {
-  //     $(this).attr("src", $(this).attr("data-description"));
-  //     $(this).attr("data-state", "description");
-  //   } else {
-  //     $(this).attr("src", $(this).attr("data-face"));
-  //     $(this).attr("data-state", "face");
-  //   }
-  // }
-);
-
-function moveHandCardToBattlefield() {
-  p1Battlefield = Object.assign({}, p1Hand);
-  console.log(p1Battlefield);
+  );
 }
+
+// function moveHandCardToBattlefield() {
+//   p1Battlefield = Object.assign({}, p1Hand);
+//   console.log(p1Battlefield);
+// }
 
 // END FUNCTION DEFINTIONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$(document).on("click", ".handcard", moveHandCardToBattlefield);
+//$(document).on("click", ".handcard", moveHandCardToBattlefield);
+
+//Runs a function on page close/refresh
+window.onbeforeunload = closingCode;
+
+//The close page function
+function closingCode() {
+  database.ref().remove();
+  // Removes all data from firebase
+  return null;
+}

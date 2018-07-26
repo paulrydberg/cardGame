@@ -27,10 +27,31 @@ h2{
   margin-top: 0;
 }
 
+input[type=range]::-webkit-slider-thumb {
+  background-color: rgb(151, 21, 21);
+}
+input[type=range]::-moz-range-thumb {
+  background-color: rgb(158, 19, 19);
+}
+input[type=range]::-ms-thumb {
+  background-color: rgb(109, 25, 25);
+}
+
+/***** These are to edit the thumb and the text inside the thumb *****/
+input[type=range] + .thumb {
+  background-color: #dedede;
+}
+input[type=range] + .thumb.active .value {
+  color: rgb(128, 49, 49);
+}
+
 
 html{
   background: url(http://caskia.me/wp-content/uploads/2018/03/hd-fire-backgrounds-group-76-throughout-wallpaper.jpg);
+
 }
+
+
 #questions {
   background-color:rgba(194, 76, 55, 0.89);
   overflow:hidden;
@@ -42,7 +63,7 @@ html{
 }
 #actualGame {
   display: none;
-  background-color: rgba(21, 255, 0, 0.308);
+  background-color: rgba(255, 72, 0, 0.308);
   height: 700px;
   position: absolute;
   top: 50%;

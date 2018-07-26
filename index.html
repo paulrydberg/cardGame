@@ -17,7 +17,7 @@
 
     <title>Dystopia Game</title>
 
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
 </head>
 
 <body>
@@ -36,53 +36,36 @@
         pawns. Mwhahahaha some of the humans that pikachu captured will escape and join the 'human' player
         thats why they are on the good guys team!</p>
         
-        <h2>ARE YOU GOOD OR EVIL BRUHHHH??!?</h2>
+        <h3>ARE YOU GOOD OR EVIL BRUHHHH??!?</h3> 
+        <p>DO YOU WANT TO SEE THE WORLD BURN?</p>
+        <p>DO YOU WANT TO SEE PIKACHU DESTROY ALL HUMANS?</p>
+        <p>DO YOU LIKE THE COLOR YELLOW?</p>
+        <p>SELECT HOW EVIL YOU ARE ON THE SCALE BELOW!!!</p>
         <br>
-            <div class="form-group text-center">
-                <p>1. DO YOU WANT TO SEE THE WORLD BURN? ?</p>
-                <form class="question">
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
-                    </label>
-                </form>
-                <br>
-                
-                <p>2. DO YOU WANT TO SEE PIKACHU DESTROY ALL HUMANS?</p>
-                <form class="question">
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
-                    </label>
-                </form>
-                <br>
+
+        <form action="#">
+            <p class="range-field">
+              <input type="range" id="test5" min="0" max="100" />
+            </p>
+        </form>
     
-                <p>3. DO YOU LIKE THE COLOR YELLOW?</p>
-                <form class="question">
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="wrong">NAH I'M GOOD!
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio" class="optradio" value="goodanswer">HMMM... MAYBE!
-                    </label>
-                </form>
-                <br>
-                <a href="#" id="gamestart" class="waves-effect waves-light btn-large">Start The Game</a>
+
+        <div class="inputrow">
+            <form class="col s12">
+                <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">NAME</label>
+                </div>
+                </div>
+            </form>
+        </div>
+
+        <a href="#" id="gamestart" allign="center" class="waves-effect waves-light btn-large">Start The Game</a>
                 
-                <br>
+                <br><br><br>
+
+
             </div>
 
     </div>
@@ -134,7 +117,18 @@
 
         </div>
 
+        <div class="playerIcons" id="p1icon">
+            <img src="https://cdn.bulbagarden.net/upload/thumb/6/63/Pokk%C3%A9n_Pikachu_Libre.png/220px-Pokk%C3%A9n_Pikachu_Libre.png" alt="pikachu" />
+        </div>
+
+
+        <div class="playerIcons" id="p2icon">
+            <img src="https://memes.lol/wp-content/uploads/2016/11/cropped-funny-memes-icon.png" alt="goodPlayer" />
+        </div>
+
         <a href="#" id="endturn" class="bttn bttn-white">End Turn</a>
+
+
 
         <!-- <a href="#" id="triggerDefense" class="bttn bttn-white">Trigger Defense</a> -->
     </div>

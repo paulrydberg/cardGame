@@ -356,3 +356,46 @@ font-family: 'Permanent Marker', cursive;
 .battlefield-card:not(.poofing) .smoke {
   opacity: 0;
 }
+
+/*===================*/
+/*Chat Box*/
+/*===================*/
+
+#chat {
+  /* Positioning */
+  position: sticky;
+  bottom: 30px;
+
+  /* Box-model */
+  width: 600px;
+  height: 150px;
+
+  /* Visual */
+  padding: 10px;
+  margin: 20px auto;
+}
+
+#chat-messages {
+  /* Box-model */
+  height: 125px;
+  overflow: auto;
+
+  /* Visual */
+  background-color: #fffcf7;
+}
+
+#chat-bar {
+  /* Positioning */
+  position: relative;
+  bottom: 10px;
+}
+
+#chat-input {
+  /* Box-model */
+  width: 550px;
+}
+
+#chat-send {
+  /* Box-model */
+  width: 60px;
+}

@@ -245,7 +245,8 @@ var p1card1SRC,
   //   Description,
   //   Ptag,
   //   Desc,
-  description;
+  description,
+  DarkFace;
 
 p1card1SRC = "./assets/images/cards/evil/agentSmith.png";
 p1card2SRC = "./assets/images/cards/evil/ajitPai.png";
@@ -260,6 +261,7 @@ p2card4SRC = "./assets/images/cards/evil/antonChigurh.png";
 p2card5SRC = "./assets/images/cards/evil/badAdviceMallard.png";
 
 description = "./assets/images/cards/descriptor.png";
+DarkFace = "./assets/images/cards/face.png";
 
 // Get a working request from the DeckOfCards API
 

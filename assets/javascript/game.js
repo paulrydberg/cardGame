@@ -870,9 +870,10 @@ $("#gamestart").on("click", function () {
     $("#textarea1").val('');
     console.log("uh there's already a player 1")
   }
-  else if (player2Name = "") {
+  
+  if (player2Name === "") {
     player2Name = p2NameInput;
-    $("#p1NameDisplay").text(p2NameInput);
+    $("#p2NameDisplay").text(p2NameInput);
     $("#beginbox").hide();
     // appendPlayer1();
     $("#actualGame").show();
@@ -884,9 +885,9 @@ $("#gamestart").on("click", function () {
     $(".card-click").attr("data-state", "unselected");
   }
   else if (player2Name = "") {
-    suckageMeter.text("There's already a Hero")
+    suckageMeter.text("There's already a Villain")
     $("#textarea2").val('');
-    console.log("uh there's already a player 1")
+    console.log("uh there's already a player 2")
   }
 
 })
@@ -921,11 +922,10 @@ connectedRef.on("value", function (snap) {
   // console.log(localStorage().getItem("name"));
 });
 
+// Empty array of users tokens
 var users = [];
 
-var inputName = $("#textarea1").val()
-console.log(inputName);
-
+// Attempt to add users via their userId and the name they picked out (into Firebase)
 function addUsers(userId, name) {
   database.ref("/users" + userId).set({
 
@@ -936,6 +936,7 @@ function addUsers(userId, name) {
   })
 };
 
+// Looks for a value change inside of the connections within Firebase and then attempts to save that token.
 connectionsRef.on("value", function (snap) {
 
   var listOfUsers = Object.keys(snap.val());

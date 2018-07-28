@@ -399,3 +399,29 @@ font-family: 'Permanent Marker', cursive;
   /* Box-model */
   width: 60px;
 }
+
+.question {
+  text-align: center;
+}
+
+.playername {
+  margin-left: 125px;
+}
+
+#gamestart {
+  margin-left: 250px;
+}
+
+#submitRange {
+  /* margin-left: 325px; */
+  color: #fff;
+}
+
+.outsideSubmitDiv {
+  margin-left: 300px;
+
+}
+
+#suckagemeter {
+  color: crimson;
+}

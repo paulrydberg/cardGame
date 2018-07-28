@@ -27,34 +27,43 @@
             tell you why!!!! I'm sick and tired of being the good guy. Now it's my turn to tell the humans what to do. </p>
         <p>I am Pikachu!!!!!! Join me as a villain or be slain along with the other petty human pawns. Mwhahahaha some of the
             humans that pikachu captured will escape and join the 'human' player thats why they are on the good guys team!</p>
-        <h3>ARE YOU GOOD OR EVIL BRUHHHH??!?</h3>
+        <h3 class="question">How much does Pikachu suck?</h3>
         <!-- <p>DO YOU WANT TO SEE THE WORLD BURN?</p>
         <p>DO YOU WANT TO SEE PIKACHU DESTROY ALL HUMANS?</p>
         <p>DO YOU LIKE THE COLOR YELLOW?</p> -->
-        <p>SELECT HOW EVIL YOU ARE ON THE SCALE BELOW!!!</p>
+        <h1 id="suckagemeter" class="question"></h1>
         <br>
         <form action="#">
             <p class="range-field">
-                <input type="range" id="test5" min="0" max="100" />
+                <input type="range" id="test5" min="0" max="10" step="1" value="0"/>
+                <div class = "outsideSubmitDiv">
+                    <input type="submit" id="submitRange" class="waves-effect waves-light btn-small" align="center" />
+                </div>
             </p>
         </form>
         <div class="inputrow">
             <form class="col s12">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div id="heroName" class="input-field col-s-6 playername">
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">NAME</label>
+                        <label for="textarea1">Hero (Player 1)</label>
                     </div>
+                    <span id="villainName" class="input-field col-s-6 playername">
+                        <textarea id="textarea2" class="materialize-textarea"></textarea>
+                        <label for="textarea2">Villain (Player 2)</label>
+                    </span>
                 </div>
             </form>
         </div>
-        <a href="#" id="gamestart" allign="center" class="waves-effect waves-light btn-large">Start The Game</a>
+        <a href="#" id="gamestart" align="center" class="waves-effect waves-light btn-large">Start The Game</a>
         <br>
         <br>
         <br>
     </div>
     </div>
+
     <div class="container" id="actualGame">
+
         <!-- Player 1's side -->
         <div class="battlefield" id="p1battlefield">
             <div class="row battlefield-row">
@@ -131,12 +140,12 @@
         <div class="playerArea" id="p1area">
             <img class="playerIcons" id="p1icon" src="https://cdn.bulbagarden.net/upload/thumb/6/63/Pokk%C3%A9n_Pikachu_Libre.png/220px-Pokk%C3%A9n_Pikachu_Libre.png"
                 alt="pikachu" />
-            <h1 id="p1name" class="playerName">Player 1</h1>
+            <h1 id="p1NameDisplay" class="playerName">Player 1</h1>
         </div>
         <div class="playerArea" id="p2area">
             <img class="playerIcons" id="p2icon" src="https://memes.lol/wp-content/uploads/2016/11/cropped-funny-memes-icon.png" alt="goodPlayer"
             />
-            <h1 id="p1name" class="playerName">Player 2</h1>
+            <h1 id="p2NameDisplay" class="playerName">Player 2</h1>
         </div>
         <a href="#" id="endturn" class="bttn bttn-white">End Turn</a>
         <br>

@@ -1,20 +1,20 @@
-$(document.body).ready(function() {
+$(document.body).ready(function () {
   $("#actualGame").hide();
-  $("#gamestart").on("click", function() {
-    $("#beginbox").hide();
-    appendPlayer1();
-    $("#actualGame").show();
-    //$(".card-click").attr("data-state", "unselected");
-    cardHover();
-    selectCard();
-    getAttributeVals();
-    pushCardVals();
-    $(".card-click").attr("data-state", "unselected");
+  // $("#gamestart").on("click", function () {
+  //   $("#beginbox").hide();
+  //   // appendPlayer1();
+  //   $("#actualGame").show();
+  //   //$(".card-click").attr("data-state", "unselected");
+  //   cardHover();
+  //   selectCard();
+  //   getAttributeVals();
+  //   pushCardVals();
+  //   $(".card-click").attr("data-state", "unselected");
 
     // p1c1(); //for some reason the is the last functions the even runs
     //tried putting the cardHover function below and after click hover doesnt work
     //p1c1 runs once only and i dont know why it wont run on other cards
-  });
+  // });
 });
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
@@ -59,7 +59,7 @@ function calcWinner(p1, p2) {
 }
 
 function getAttributeVals() {
-  $(document.body).on("click", ".cards", function() {
+  $(document.body).on("click", ".cards", function () {
     attackVal = $(this).attr("data-attack");
     defenseVal = $(this).attr("data-defense");
 
@@ -69,7 +69,7 @@ function getAttributeVals() {
 }
 
 function pushCardVals() {
-  $(document.body).on("click", ".cards", function() {
+  $(document.body).on("click", ".cards", function () {
     database.ref("/" + "p1Scores").set({
       attackVal: attackVal,
       defenseVal: defenseVal
@@ -80,7 +80,7 @@ function pushCardVals() {
 function func2() {
   database.ref("/" + "p1Scores").on(
     "value",
-    function(snapshot) {
+    function (snapshot) {
       // console.log(snapshot.val();   // Shows data from entire firebase object
       var firebaseAttackVal = Object.keys(snapshot.val().attackVal);
       var firebasedefenseVal = Object.keys(snapshot.val().defenseVal);
@@ -105,14 +105,14 @@ function func2() {
       //console.log(player2Firebase);
       // console.log("^^^ Firebase Player 2 Object");
     },
-    function(errorObject) {
+    function (errorObject) {
       // In case of error this will print the error
       console.log("The read failed: " + errorObject.code);
     }
   );
 }
 
-$(document).on("click", ".cards", function() {
+$(document).on("click", ".cards", function () {
   // database.ref("/" + "p1Scores").on(
   //   "value",
   //   function(snapshot) {
@@ -143,7 +143,7 @@ $(document).on("click", ".cards", function() {
 });
 
 function cardHover() {
-  $(".cards").hover(function() {
+  $(".cards").hover(function () {
     var state = $(this).attr("data-state");
 
     if (state === "face") {
@@ -177,7 +177,7 @@ function cardHover() {
 // });
 
 function selectCard() {
-  $(".card-click").on("click", function() {
+  $(".card-click").on("click", function () {
     var state = $(this).attr("data-state");
 
     if (state === "selected") {
@@ -197,11 +197,13 @@ function selectCard() {
         .css("-moz-opacity", "100%")
         .css("-webkit-opacity", "100%");
     }
+
+    console.log(this.attr());
   });
 }
 
 function p1c1() {
-  $(".cards").on("click", function() {
+  $(".cards").on("click", function () {
     var attackVal = $(this).attr("data-attack");
     var defenseVal = $(this).attr("data-defense");
     //console.log("This cards attack value is: " + attackVal);
@@ -275,8 +277,10 @@ var p1Hand = [];
 var p2Hand = [];
 var p1Battlefield = [];
 var p2Battlefield = [];
+var player1Name = "";
+var player2Name = "";
 
-setTimeout(masterStartFunction);
+// setTimeout(masterStartFunction);
 
 function masterStartFunction() {
   runStartPlayer1();
@@ -385,7 +389,7 @@ function storeP2Hand() {
 function callFirebaseData() {
   database.ref().on(
     "value",
-    function(snapshot) {
+    function (snapshot) {
       // console.log(snapshot.val();   // Shows data from entire firebase object
       var player1Key = Object.keys(snapshot.val())[0];
       //console.log(player1Key);
@@ -405,7 +409,7 @@ function callFirebaseData() {
       console.log(player2Firebase);
       // console.log("^^^ Firebase Player 2 Object");
     },
-    function(errorObject) {
+    function (errorObject) {
       // In case of error this will print the error
       console.log("The read failed: " + errorObject.code);
     }
@@ -687,7 +691,7 @@ function addImageToCards(handArray) {
 function appendPlayer1() {
   database.ref().on(
     "value",
-    function(snapshot) {
+    function (snapshot) {
       var player1Key = Object.keys(snapshot.val())[0];
       //var player2Key = Object.keys(snapshot.val())[1];
       var player1Firebase = snapshot.val()[player1Key].p1Hand;
@@ -743,7 +747,7 @@ function appendPlayer1() {
         //$(cardIMG).css("border", "5px solid red");
       }
     },
-    function(errorObject) {
+    function (errorObject) {
       // In case of error this will print the error
       console.log("The read failed: " + errorObject.code);
     }
@@ -772,7 +776,7 @@ function closingCode() {
 
 //$(document).on("click", ".handcard", moveHandCardToBattlefield);
 
-$(function() {
+$(function () {
   $(".battlefield-card").on("click", doPoof);
 });
 
@@ -782,8 +786,175 @@ function doPoof() {
   me.stop()
     .addClass("poofing")
     .delay(500) // matches animation duration
-    .queue(function() {
+    .queue(function () {
       me.removeClass("poofing");
       me.dequeue();
     });
 }
+
+var suckageMeter = $("#suckagemeter");
+var suckageMeterValue;
+
+
+// Is constantly checking for a change in value from the range input and then logging it into the suckageMeterValue variable.
+$("#test5").on("change", function () {
+
+  suckageMeterValue = $("#test5").val();
+  console.log(suckageMeterValue);
+})
+
+// When the submit button is hit, append's the user's feelings and decides whether they're Player 1 or Player 2.
+$("#submitRange").on("click", function () {
+  event.preventDefault();
+  console.log(suckageMeterValue);
+
+  let range = $("#test5")
+  let submitbutton = $("#submitRange")
+  let outsideSubmitDiv = $(".btn-small")
+
+  // Hides the range and the submit button when submit is clicked.
+  range.hide();
+  submitbutton.hide();
+  outsideSubmitDiv.hide();
+
+  // Conditionals that gather what the user picked and sets them as either Player 1 or Player 2.
+  if (suckageMeterValue <= 3) {
+
+    suckageMeter.append("What a loser")
+    $("#heroName").hide();
+  }
+  else if (suckageMeterValue > 3 && suckageMeterValue <= 6) {
+
+    suckageMeter.append("Pick a side")
+
+  }
+  else if (suckageMeterValue > 6 && suckageMeterValue <= 8) {
+
+    suckageMeter.append("Yeah he's pretty evil..")
+    $("#villainName").hide();
+  }
+  else if (suckageMeterValue > 8 && suckageMeterValue <= 10) {
+
+    suckageMeter.append("Lemme at him!")
+    $("#villainName").hide();
+  }
+  else {
+    suckageMeter.append("That's what I thought")
+  }
+
+
+
+})
+
+// Saves player's name.
+$("#gamestart").on("click", function () {
+  let p1NameInput = $("#textarea1").val().trim();
+  let p2NameInput = $("#textarea2").val().trim();
+
+
+  if (player1Name === "" && player2Name === "") {
+    player1Name = p1NameInput;
+    $("#p1NameDisplay").text(p1NameInput);
+    $("#beginbox").hide();
+    // appendPlayer1();
+    $("#actualGame").show();
+    //$(".card-click").attr("data-state", "unselected");
+    cardHover();
+    selectCard();
+    getAttributeVals();
+    pushCardVals();
+    $(".card-click").attr("data-state", "unselected");
+  }
+  else if (player1Name !== "") {
+    suckageMeter.text("There's already a Hero")
+    $("#textarea1").val('');
+    console.log("uh there's already a player 1")
+  }
+  
+  if (player2Name === "") {
+    player2Name = p2NameInput;
+    $("#p2NameDisplay").text(p2NameInput);
+    $("#beginbox").hide();
+    // appendPlayer1();
+    $("#actualGame").show();
+    //$(".card-click").attr("data-state", "unselected");
+    cardHover();
+    selectCard();
+    getAttributeVals();
+    pushCardVals();
+    $(".card-click").attr("data-state", "unselected");
+  }
+  else if (player2Name = "") {
+    suckageMeter.text("There's already a Villain")
+    $("#textarea2").val('');
+    console.log("uh there's already a player 2")
+  }
+
+})
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// USER AUTHENTIFICATION VIA FIREBASE
+
+var connectionsRef = database.ref("/connections");
+
+var connectedRef = database.ref(".info/connected");
+
+var userName = $("textarea1").val();
+
+// References a native section of Firebase that shows whether the client is connected.
+connectedRef.on("value", function (snap) {
+
+  if (snap.val()) {
+
+    // Pushes the value "true," to the "/connections" section of Firebase to confirm the connection as a user.
+    let con = connectionsRef.push(true)
+    console.log("A User's been connected!");
+
+
+    // Removes the user if they disconnect. *right now it empties the entire firebase*
+    database.ref().child("connections").onDisconnect().remove();
+  }
+
+
+
+  // localStorage().getItem("name");
+  // console.log(localStorage().getItem("name"));
+});
+
+// Empty array of users tokens
+var users = [];
+
+// Attempt to add users via their userId and the name they picked out (into Firebase)
+function addUsers(userId, name) {
+  database.ref("/users" + userId).set({
+
+    username: name,
+    userId: userId
+
+
+  })
+};
+
+// Looks for a value change inside of the connections within Firebase and then attempts to save that token.
+connectionsRef.on("value", function (snap) {
+
+  var listOfUsers = Object.keys(snap.val());
+
+  console.log(snap.val());
+
+  // Takes the JSON data (JavaScript Object Notation) and returns the ID of the user as a string.
+  var legibleSnap = JSON.stringify(listOfUsers);
+
+  // Pushes the user's ID into the Array.
+  // users.push(legibleSnap);
+
+  // Stores the 'user' array locally
+  localStorage.setItem("users", JSON.stringify(listOfUsers));
+
+  // Sets the users array into Firebase.
+  // connectionsRef.set(users);
+
+});
+
+console.log(database.ref("/connections"));

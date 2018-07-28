@@ -1,14 +1,15 @@
-$(document).ready(function() {
+$(document.body).ready(function() {
   $("#actualGame").hide();
   $("#gamestart").on("click", function() {
     $("#beginbox").hide();
     appendPlayer1();
     $("#actualGame").show();
-    $(".card-click").attr("data-state", "unselected");
+    //$(".card-click").attr("data-state", "unselected");
     cardHover();
     selectCard();
     getAttributeVals();
     pushCardVals();
+    $(".card-click").attr("data-state", "unselected");
 
     // p1c1(); //for some reason the is the last functions the even runs
     //tried putting the cardHover function below and after click hover doesnt work
@@ -150,13 +151,13 @@ function cardHover() {
       $(this).attr("data-state", "description");
       $(this)
         .parent()
-        .css("z-index", "-2");
+        .css("z-index", "2");
     } else {
       $(this).attr("src", $(this).attr("data-face"));
       $(this).attr("data-state", "face");
       $(this)
         .parent()
-        .css("z-index", "2");
+        .css("z-index", "7");
     }
   });
 }
@@ -717,7 +718,7 @@ function appendPlayer1() {
         Container.addClass("relative");
         var Description = $("<div>");
         Description.addClass("absolute");
-        $(Description).css("z-index", "0");
+        $(Description).css("z-index", "4");
         var cardTitle = $("<h6>");
         cardTitle.addClass("h6");
         var Ptag = $("<p>");
@@ -735,8 +736,9 @@ function appendPlayer1() {
         Container.append(Title);
         Container.append(Desc);
 
-        $("#p1card" + [i]).append(Container);
-        $(cardIMG).css("border", "5px solid red");
+        $("#cardHeld" + [i]).append(Container);
+        //$("#cardHeld" + [i]).append(IMGdiv);
+        //$(cardIMG).css("border", "5px solid red");
       }
     },
     function(errorObject) {
@@ -766,22 +768,20 @@ function closingCode() {
   return null;
 }
 
-
-$(document).on("click", ".handcard", moveHandCardToBattlefield)
-
+//$(document).on("click", ".handcard", moveHandCardToBattlefield);
 
 $(function() {
-  $(".battlefield-card").on('click', doPoof);
+  $(".battlefield-card").on("click", doPoof);
 });
 
 function doPoof() {
   let me = $(this);
-  
+
   me.stop()
     .addClass("poofing")
     .delay(500) // matches animation duration
-    .queue(function(){
-        me.removeClass('poofing');
-        me.dequeue();
+    .queue(function() {
+      me.removeClass("poofing");
+      me.dequeue();
     });
 }

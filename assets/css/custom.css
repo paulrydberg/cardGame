@@ -1,7 +1,6 @@
-
 gamebody {
   background-image: linear-gradient(to right bottom, #7ed56fc5, #28b485bb),
-  url(http://www.onlygfx.com/wp-content/uploads/2015/11/blood-splatter-9.jpg);
+    url(http://www.onlygfx.com/wp-content/uploads/2015/11/blood-splatter-9.jpg);
   background-size: cover;
   background-position: top;
 }
@@ -12,53 +11,50 @@ img {
   shape-outside: circle(50%);
   margin-right: 10px;
 }
-body{
+body {
   font-family: eczar;
   width: 70%;
   margin: 40px auto;
   background-color: #fff;
   box-shadow: 0 0 20px #999;
 }
-h1{
+h1 {
   text-align: center;
   margin-top: 0;
 }
-h2{
+h2 {
   text-align: center;
   margin-top: 0;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   background-color: rgb(151, 21, 21);
 }
-input[type=range]::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   background-color: rgb(158, 19, 19);
 }
-input[type=range]::-ms-thumb {
+input[type="range"]::-ms-thumb {
   background-color: rgb(109, 25, 25);
 }
 
 /***** These are to edit the thumb and the text inside the thumb *****/
-input[type=range] + .thumb {
+input[type="range"] + .thumb {
   background-color: #dedede;
 }
-input[type=range] + .thumb.active .value {
+input[type="range"] + .thumb.active .value {
   color: rgb(128, 49, 49);
 }
 
-
-html{
+html {
   background: url(http://caskia.me/wp-content/uploads/2018/03/hd-fire-backgrounds-group-76-throughout-wallpaper.jpg);
-
 }
 
-
 #questions {
-  background-color:rgba(194, 76, 55, 0.89);
-  overflow:hidden;
+  background-color: rgba(194, 76, 55, 0.89);
+  overflow: hidden;
   margin: 10px;
-  min-height:170px;
-  width:45%;
+  min-height: 170px;
+  width: 45%;
   font-family: "Permanent Marker", cursive;
   text-align: center;
 }
@@ -75,7 +71,7 @@ html{
   text-align: center;
   padding: 0;
 }
- #results {
+#results {
   display: none;
   background-color: rgba(21, 255, 0, 0.308);
   height: 200px;
@@ -86,14 +82,14 @@ html{
   width: 70%;
   font-family: "Permanent Marker", cursive;
   text-align: center;
-} 
+}
 #title {
   padding: 17% 0;
   animation: moveInRight 1s ease-out;
 }
 
 .higherZ {
-  z-index: 2;
+  z-index: 6;
 }
 
 .absolute {
@@ -101,6 +97,19 @@ html{
 }
 .relative {
   position: relative;
+}
+
+.card-click {
+  /* border: 3px solid green; */
+
+  background-color: SlateGray;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  -moz-opacity: 70%;
+  -webkit-opacity: 70%;
+  z-index: 8;
 }
 
 .text-block {
@@ -127,10 +136,8 @@ html{
   display: inline-block;
 }
 .justinline {
-  display: inline-block
+  display: inline-block;
 }
-
-
 
 .bttn:hover {
   transform: translateY(-3px);
@@ -169,101 +176,97 @@ html{
   padding-top: 25px;
 }
 
-  /* Battlefield CSS */
+/* Battlefield CSS */
 
-  .playerArea {
-    position: absolute;
-    width: 40%;
-    top: 50%;
-   transform: translateY(-50%);
-  }
+.playerArea {
+  position: absolute;
+  width: 40%;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  #p1area {
-    left: 0;
-  }
+#p1area {
+  left: 0;
+}
 
-  #p2area {
-    right: 0;
-  }
+#p2area {
+  right: 0;
+}
 
-  .playerIcons {
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-  }
+.playerIcons {
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
 
-  #p1icon {
+#p1icon {
+}
 
-  }
+#p2icon {
+}
 
-  #p2icon {
+.playerName {
+  margin: 0;
+  text-align: center;
+  font-size: 3em;
+  margin-top: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  }
+#p1name {
+}
 
-  .playerName {
-    margin: 0;
-    text-align: center;
-    font-size: 3em; 
-    margin-top: 25px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+#p2name {
+}
 
-  #p1name {
-  }
-  
-  #p2name {
-  }
+.player1cards {
+}
+.player2cards {
+}
 
-  .player1cards {
-    
-  }
-  .player2cards {
-    
-  }
+.cards {
+  width: 190px;
+  position: absolute;
+  clip: rect(5px, 160px, 175px, 25px);
+}
 
-  .cards {
-    width: 200px;
-    /* position: relative; */
-    /* padding: 5px; */
-  }
+.drawpile {
+  width: 140px;
+  float: right;
+  margin-top: 50px;
+}
 
-  .drawpile {
-    width: 140px;
-    float: right;
-    margin-top: 50px;
-  }
+#p1draw {
+  margin-top: 100px;
+}
 
-  #p1draw {
-    margin-top: 100px;
-  }
+#p2draw {
+  margin-top: 150px;
+}
 
-  #p2draw {
-    margin-top: 150px;
-  }
+.discardpile {
+  width: 140px;
+  float: left;
+  margin-top: 50px;
+}
 
-  .discardpile {
-    width: 140px;
-    float: left;
-    margin-top: 50px;
-  }
+#p2discard {
+  margin-top: 200px;
+}
 
-  #p2discard {
-    margin-top: 200px;
-  }
+.battlefield {
+  height: 200px;
+  background: blue;
+  width: 100%;
+}
 
-  .battlefield {
-    height: 200px;
-    background: blue;
-    width: 100%;
-  }
+#p2battlefield {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
-  #p2battlefield {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  /* ENDS CSS FOR BATTLEFIELD */
+/* ENDS CSS FOR BATTLEFIELD */
 
 /* 
 font-family: 'Shrikhand', cursive;
@@ -275,10 +278,10 @@ font-family: 'Permanent Marker', cursive;
   height: 100%;
 }
 .battlefield-card {
- background: green;
- border: 1px solid black;
- height: 100%;
- margin: 0 5px;
+  background: green;
+  border: 1px solid black;
+  height: 100%;
+  margin: 0 5px;
 }
 
 #endturn {
@@ -286,6 +289,11 @@ font-family: 'Permanent Marker', cursive;
   top: 58%;
   left: 50%;
   transform: translate(-50%);
+}
+
+.nudge-left {
+  /* left: -35px; */
+  left: 0%;
 }
 
 /*===================*/
@@ -322,7 +330,7 @@ font-family: 'Permanent Marker', cursive;
   z-index: 2;
 }
 .smoke-ring {
-  z-index: -1;
+  z-index: -2;
 }
 
 .poofing .smoke {
@@ -342,9 +350,9 @@ font-family: 'Permanent Marker', cursive;
 }
 
 .battlefield-card .smoke {
-  opacity:1;
+  opacity: 1;
 }
 
 .battlefield-card:not(.poofing) .smoke {
-  opacity:0;
+  opacity: 0;
 }

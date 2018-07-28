@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +10,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-
-    <!-- Compiled and minified CSS -->
+    
+    
+    
+        <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
     <link rel="stylesheet" href="./assets/css/custom.css">
 
-    <title>Dystopia Game</title>
+
+    <title>Pikachu's Revenge!</title>
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 </head>
@@ -24,8 +28,7 @@
 
     <div class="container" id="beginbox">
         <h1>Pikachu's Revenge</h1>
-
-        <img  src="https://img.clipartxtras.com/d2598a19a888e5b08680dadb271b7af4_angry-pikachu-drawing-clipartxtras-angry-pikachu-drawing_600-623.jpeg" alt="Pikachu" />
+        <img  src="https://img.clipartxtras.com/d2598a19a888e5b08680dadb271b7af4_angry-pikachu-drawing-clipartxtras-angry-pikachu-drawing_600-623.jpeg" id="bwpikachu" alt="Pikachu" />
         <p>...for too long I've seen my friends become captured by humans and stuffed into pokeballs...only to have
         us fight each-other. I've witnessed this problem from the inside since day 1. Now we are the ones
         who will do the capturing, we will command an army of villains to do our bidding. </p>
@@ -69,66 +72,6 @@
 
             </div>
 
-        <img src="https://img.clipartxtras.com/d2598a19a888e5b08680dadb271b7af4_angry-pikachu-drawing-clipartxtras-angry-pikachu-drawing_600-623.jpeg"
-            alt="Pikachu" />
-        <p>...for too long I've seen my friends become captured by humans and stuffed into pokeballs...only to have us fight
-            each-other. I've witnessed this problem from the inside since day 1. Now we are the ones who will do the capturing,
-            we will command an army of villains to do our bidding. </p>
-        <p>Who am I?...My name is Pikachu. I know what you're thinking...Pikachu why are you using villains to fight with? I'll
-            tell you why!!!! I'm sick and tired of being the good guy. Now it's my turn to tell the humans what to do. </p>
-        <p>I am Pikachu!!!!!! Join me as a villain or be slain along with the other petty human pawns. Mwhahahaha some of the
-            humans that pikachu captured will escape and join the 'human' player thats why they are on the good guys team!</p>
-
-        <h2>ARE YOU GOOD OR EVIL BRUHHHH??!?</h2>
-        <br>
-        <div class="form-group text-center">
-            <p>1. DO YOU WANT TO SEE THE WORLD BURN? ?</p>
-            <form class="question">
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
-                </label>
-            </form>
-            <br>
-
-            <p>2. DO YOU WANT TO SEE PIKACHU DESTROY ALL HUMANS?</p>
-            <form class="question">
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="goodanswer">NAH I'M GOOD!
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">HMMM... MAYBE!
-                </label>
-            </form>
-            <br>
-
-            <p>3. DO YOU LIKE THE COLOR YELLOW?</p>
-            <form class="question">
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">YASSSS
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="wrong">NAH I'M GOOD!
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio" class="optradio" value="goodanswer">HMMM... MAYBE!
-                </label>
-            </form>
-            <br>
-            <a href="#" id="gamestart" class="bttn bttn-white">Start The Game</a>
-
-            <br>
-        </div>
-
-
     </div>
 
     <div class="container" id="actualGame">
@@ -136,21 +79,26 @@
         <!-- Player 1's side -->
         <div class="battlefield" id="p1battlefield">
 
-            <div class="row">
-                <div class="col card-click" id="p1card0">
-
+            <div class="row battlefield-row">
+                <div class="col battlefield-card" id="p1card0">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col card-click" id="p1card1">
-
+                <div class="col battlefield-card" id="p1card1">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col card-click" id="p1card2">
-
+                <div class="col battlefield-card" id="p1card2">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col card-click" id="p1card3">
-
+                <div class="col battlefield-card" id="p1card3">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col card-click" id="p1card4">
-
+                <div class="col battlefield-card" id="p1card4">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
             </div>
 
@@ -158,38 +106,45 @@
 
 
         <div class="battlefield" id="p2battlefield">
-            <div class="row">
-                <div class="col" id="p2card0">
 
+            <div class="row battlefield-row">
+
+                <div class="col battlefield-card" id="p2card0">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col" id="p2card1">
-
+                <div class="col battlefield-card" id="p2card1">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col" id="p2card2">
-
+                <div class="col battlefield-card" id="p2card2">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col" id="p2card3">
-
+                <div class="col battlefield-card" id="p2card3">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
-                <div class="col" id="p2card4">
-
+                <div class="col battlefield-card" id="p2card4">
+                    <div class="smoke"></div>
+                    <div class="smoke-ring"></div>
                 </div>
             </div>
 
         </div>
 
-        <div class="playerIcons" id="p1icon">
-            <img src="https://cdn.bulbagarden.net/upload/thumb/6/63/Pokk%C3%A9n_Pikachu_Libre.png/220px-Pokk%C3%A9n_Pikachu_Libre.png" alt="pikachu" />
+        <div class="playerArea" id="p1area">
+            <img  class="playerIcons" id="p1icon" src="https://cdn.bulbagarden.net/upload/thumb/6/63/Pokk%C3%A9n_Pikachu_Libre.png/220px-Pokk%C3%A9n_Pikachu_Libre.png" alt="pikachu" />
+            <h1 id="p1name" class="playerName">Player 1</h1>
         </div>
 
 
-        <div class="playerIcons" id="p2icon">
-            <img src="https://memes.lol/wp-content/uploads/2016/11/cropped-funny-memes-icon.png" alt="goodPlayer" />
+        <div class="playerArea" id="p2area">
+            <img  class="playerIcons" id="p2icon" src="https://memes.lol/wp-content/uploads/2016/11/cropped-funny-memes-icon.png" alt="goodPlayer" />
+            <h1 id="p1name" class="playerName">Player 2</h1>
         </div>
 
         <a href="#" id="endturn" class="bttn bttn-white">End Turn</a>
-
-
 
         <!-- <a href="#" id="triggerDefense" class="bttn bttn-white">Trigger Defense</a> -->
     </div>
@@ -203,14 +158,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
     <script type="text/javascript" src="./assets/javascript/game.js">
+    
+
+    
+            
 
     </script>
 </body>
 
 </html>
+

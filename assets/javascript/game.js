@@ -667,3 +667,22 @@ function closingCode() {
   // Removes all data from firebase
   return null;
 }
+
+$(document).on("click", ".handcard", moveHandCardToBattlefield)
+
+
+$(function() {
+  $(".battlefield-card").on('click', doPoof);
+});
+
+function doPoof() {
+  let me = $(this);
+  
+  me.stop()
+    .addClass("poofing")
+    .delay(500) // matches animation duration
+    .queue(function(){
+        me.removeClass('poofing');
+        me.dequeue();
+    });
+}
